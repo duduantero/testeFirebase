@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"; charset=ISO-8859-1"
+http-equiv="content-type">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Cadastro de Usuario</title>
+    
+</head>
+<body>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <header>
+        <nav class="navigation">
+            
+            <a href="index.html" class="logo"><img id="logo24" src="#" alt="logo"></a> 
+            <ul class="nav-menu">
+             <!--   <li class="nav-item"><a href="index.html">Home</a></li> -->
+                <li class="nav-item"><a href="oracoes.html">Home</a></li>
+                <li class="nav-item"><a href="calendario.html">Calendário</a></li>
+                <li class="nav-item"><a href="contato.html">Contato</a></li>
+             <!--   <i class='bx bx-search'></i> -->
+            </ul>
+            <div class="menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    <br><br><br><br><br><br>
+    <section class="cad-form">
+        <form id="form_cadastro">
+            <h1 id="titulo">Junte-se a Nos</h1><br>
+
+            <fieldset class="grupo">
+            <div class="campo">
+                <label for="nome"><strong>Nome Completo:</strong></label>
+                <input type="text" name="nome" id="nome" class="inputtext _58mg _5dba _2ph-" required>
+            </div>
+
+            <div class="campo">
+                <label for="email"><strong>E-mail:</strong></label>
+                <input type="email" name="email" id="email" class="inputtext _58mg _5dba _2ph-" required>
+            </div>
+            
+            <div class="campo">
+                <label for="tel"><strong>Telefone:</strong></label>
+                <input type="tel" name="telefone" id="telefone" class="inputtext _58mg _5dba _2ph-" required>
+            </div>
+
+            <div class="campo">
+                <label for="aniversario"><strong>Data de Nascimento</strong></label>
+                <input type="date" name="aniversario" id="aniversario" class="inputtext _58mg _5dba _2ph-">
+            </div>
+    </div><br>
+
+        <button onclick="enviarDados(); cadastro()" class="home-btn" name="submit" >Finalizar Cadastro</button>
+        </fieldset>
+        </form>
+
+
+    </section>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // 
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAgPrfGRykeL_BFGUDxc4MacUbHPfCHSy0",
+          authDomain: "testefirebase-21ad7.firebaseapp.com",
+          projectId: "testefirebase-21ad7",
+          storageBucket: "testefirebase-21ad7.appspot.com",
+          messagingSenderId: "457568077999",
+          appId: "1:457568077999:web:05986a6377e87a7060ac5a"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        firebase.initializeApp(config);
+        const form = document.querySelector('form')
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            let nome = document.querySelector('[name=nome]').value;
+            db.collection('nome').add({
+                name : name
+            })
+            //alert(nome);//
+            alert(`Seu cadastrado foi efetuado com sucesso ${name}`,$name);
+
+        })
+
+        </script>
+    <script src="nav.js"></script>
+     
+</body>
+</html>
