@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Funcionando em Firebase</title>
+</head>
+<body>
+    <fieldset>
+        
+        <form id="form_cadastro">
+            Nome:<input type="text"name="nome" id="nome"/><br>
+            E-mail:<input type="email"name="email" id="email"/><br>
+            Telefone:<input type="number"name="tel" id="tel"/><br>
+            Data nascimento:<input type="date" name="nascimento" id="nascimento"/><br>
+            <input type="submit" onClick="SubscriberUser()"/>
+        </form>
+    </fieldset>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging-compat.js"></script>
+    <script>
+        //modificar de acordor com o seu projeto
+        const firebaseConfig = {
+             apiKey: "AIzaSyAgPrfGRykeL_BFGUDxc4MacUbHPfCHSy0",
+             authDomain: "testefirebase-21ad7.firebaseapp.com",
+             projectId: "testefirebase-21ad7",
+             storageBucket: "testefirebase-21ad7.appspot.com",
+             messagingSenderId: "457568077999",
+             appId: "1:457568077999:web:05986a6377e87a7060ac5a"
+        };
+
+       const firebaseApp = firebase.initializeApp(firebaseConfig);
+       const db = firebaseApp.firestore();
+      // const messaging = getMessaging();
+
+    function SubscriberUser(){
+        console.log('trabalhando')
+
+    };
+
+    const form = document.querySelector('#form_cadastro');
+    
+    form.addEventListener('submit',(event)=>{
+        event.preventDefault();
+
+        let novoCadastro = {
+            nome: form.nome.value,
+            email: form.email.value,
+            tel: form.tel.value,
+            nascimento: form.nascimento.value
+        }
+        
+        db.collection('Cadastros').add({
+           novoCadastro: novoCadastro
+        })
+
+        console.log(novoCadastro)
+        alert("seu cadastro foi realizado com sucesso ! ");
+    })
+    </script>
+</body>
+</html>

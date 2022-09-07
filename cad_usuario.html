@@ -10,7 +10,8 @@ http-equiv="content-type">
 </head>
 <body>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>-->
+
     <header>
         <nav class="navigation">
             
@@ -40,23 +41,9 @@ http-equiv="content-type">
                 <input type="text" name="nome" id="nome" class="inputtext _58mg _5dba _2ph-" required>
             </div>
 
-            <div class="campo">
-                <label for="email"><strong>E-mail:</strong></label>
-                <input type="email" name="email" id="email" class="inputtext _58mg _5dba _2ph-" required>
-            </div>
-            
-            <div class="campo">
-                <label for="tel"><strong>Telefone:</strong></label>
-                <input type="tel" name="telefone" id="telefone" class="inputtext _58mg _5dba _2ph-" required>
-            </div>
-
-            <div class="campo">
-                <label for="aniversario"><strong>Data de Nascimento</strong></label>
-                <input type="date" name="aniversario" id="aniversario" class="inputtext _58mg _5dba _2ph-">
-            </div>
+          
     </div><br>
 
-        <button onclick="enviarDados(); cadastro()" class="home-btn" name="submit" >Finalizar Cadastro</button>
         </fieldset>
         </form>
 
@@ -64,36 +51,22 @@ http-equiv="content-type">
     </section>
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // 
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyAgPrfGRykeL_BFGUDxc4MacUbHPfCHSy0",
-          authDomain: "testefirebase-21ad7.firebaseapp.com",
-          projectId: "testefirebase-21ad7",
-          storageBucket: "testefirebase-21ad7.appspot.com",
-          messagingSenderId: "457568077999",
-          appId: "1:457568077999:web:05986a6377e87a7060ac5a"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        firebase.initializeApp(config);
-        const form = document.querySelector('form')
-        form.addEventListener('submit',(e)=>{
-            e.preventDefault();
-            let nome = document.querySelector('[name=nome]').value;
-            db.collection('nome').add({
-                name : name
-            })
-            //alert(nome);//
-            alert(`Seu cadastrado foi efetuado com sucesso ${name}`,$name);
+  import { firestore } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
-        })
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyC_pI9O72REpbXrjpkF3YYAF5xqjk1safY",
+    authDomain: "teste-15461.firebaseapp.com",
+    projectId: "teste-15461",
+    storageBucket: "teste-15461.appspot.com",
+    messagingSenderId: "92905915078",
+    appId: "1:92905915078:web:6f27bf625508e292340dc7"
+  };
 
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
         </script>
     <script src="nav.js"></script>
      
