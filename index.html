@@ -18,6 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging-compat.js"></script>
+    
     <script>
         //modificar de acordor com o seu projeto
         const firebaseConfig = {
@@ -31,12 +32,21 @@
 
        const firebaseApp = firebase.initializeApp(firebaseConfig);
        const db = firebaseApp.firestore();
-      // const messaging = getMessaging();
+      const messaging = firebase.messaging();
 
     function SubscriberUser(){
-        console.log('trabalhando')
+        console.log('Funcionando')
+        Notification.requestPermission().then(permission=>{
+            console.log(permission)
+            if(permission ==='granted'){
+                messaging.getToken(
+                {vapidKey:"BF11m07a9rI0ej7hqpujWmtLQ1bklIedVy7OaGPPfAI3eJyuscpsP3VhVROp9NkEQHnHXwONaVzk0J7iRvgGgRU"}).then(currentToken=>{
+                    console.log(currentToken)
+                })
+            }
+        })
 
-    };
+    }
 
     const form = document.querySelector('#form_cadastro');
     
