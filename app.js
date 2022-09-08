@@ -9,16 +9,17 @@ const firebaseConfig = {
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
-const app = getMessaging();
+const messaging = firebase.messaging();
 
 function SubscriberUser(){
     console.log('Funcionando')
     Notification.requestPermission().then(permission=>{
         console.log(permission)
         if(permission ==='granted'){
-            app.getToken(
+            messaging.getToken(
             {vapidKey:"BF11m07a9rI0ej7hqpujWmtLQ1bklIedVy7OaGPPfAI3eJyuscpsP3VhVROp9NkEQHnHXwONaVzk0J7iRvgGgRU"}).then(currentToken=>{
                 console.log(currentToken)
+                document.getElementById('tokenId').innerHTML = currentToken
             })
         }else{
             console.log('No registration token available. Request permission to generate one.')
@@ -46,3 +47,5 @@ form.addEventListener('submit',(event)=>{
     console.log(novoCadastro)
     alert("seu cadastro foi realizado com sucesso ! ");
 })
+
+

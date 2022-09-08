@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Funcionando em Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging-compat.js"></script>
+</head>
+<body>
+
+    <h1>Send Notification</h1>
+    <input type="text"  id="token" placeholder="Enter User Token Id">
+    <input type="text"  id="title" placeholder="Title">
+    <input type="text"  id="msg" placeholder="MSG">
+
+    <button onclick="sendNotification()">Send</button>
+    <div id="tokenId"></div>
+
+    <script>
+
+        messaging.onMessage(res=>{
+          console.log(res)  
+        }) 
+
+        function sendNotification(){
+    const token = document.getElementById('token').value
+    const title = document.getElementById('title').value
+    const msg = document.getElementById('msg').value
+
+    let body ={
+        to: token,
+        notification:{
+            title: title,
+            body: msg,
+            icon: "icon.png",
+            click_action: "https://www.google.com.br/"
+        }
+    }
+    const options ={
+        method: "POST",
+        headers: new Headers({
+            Authorization:"key=BF11m07a9rI0ej7hqpujWmtLQ1bklIedVy7OaGPPfAI3eJyuscpsP3VhVROp9NkEQHnHXwONaVzk0J7iRvgGgRU",
+            "Content-Type":"application/json"
+          }),
+          body: JSON.stringify(body)
+     }
+
+    fetch("https://fcm.googleapis.com/fcm/send", options).then(res=>{
+        console.log(res)
+        console.log('SENT')
+    }).catch(e=> console.log(e))
+
+}
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
