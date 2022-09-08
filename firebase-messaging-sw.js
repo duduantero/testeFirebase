@@ -1,6 +1,6 @@
-import {  } from "getMessaging, getToken";
-importScripts("")
-import { getMessaging } from "firebase/compat/app";
+importScripts('https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore-compat.js')
+importScripts('https://www.gstatic.com/firebasejs/9.9.3/firebase-messaging-compaq.js')
+
 const firebaseConfig = {
     apiKey: "AIzaSyAgPrfGRykeL_BFGUDxc4MacUbHPfCHSy0",
     authDomain: "testefirebase-21ad7.firebaseapp.com",
